@@ -29,7 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* Navigation */
         nav {
             background: var(--white);
             padding: 1rem 5%;
@@ -76,7 +75,6 @@
             color: var(--primary-orange);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--dark-gray) 0%, var(--text-dark) 100%);
             color: var(--white);
@@ -157,15 +155,18 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-image img {
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover;
         }
 
-        /* Stats Section */
         .stats {
             background: var(--primary-orange);
             color: var(--white);
@@ -191,7 +192,6 @@
             opacity: 0.95;
         }
 
-        /* Services Section */
         .services {
             padding: 4rem 5%;
             background: var(--light-gray);
@@ -279,7 +279,6 @@
             color: var(--primary-orange);
         }
 
-        /* Pricing Section */
         .pricing {
             padding: 4rem 5%;
             background: var(--white);
@@ -366,7 +365,6 @@
             margin-top: 0.25rem;
         }
 
-        /* Case Studies */
         .cases {
             padding: 4rem 5%;
             background: var(--light-gray);
@@ -442,7 +440,6 @@
             margin-top: 0.25rem;
         }
 
-        /* Contact Section */
         .contact {
             padding: 4rem 5%;
             background: var(--white);
@@ -512,7 +509,6 @@
             box-shadow: 0 8px 20px rgba(255,140,66,0.3);
         }
 
-        /* Footer */
         footer {
             background: var(--dark-gray);
             color: var(--white);
@@ -573,7 +569,6 @@
             color: rgba(255,255,255,0.6);
         }
 
-        /* Responsive Design */
         @media (min-width: 640px) {
             .cta-group {
                 flex-direction: row;
@@ -627,7 +622,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -643,7 +637,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Turning Taste into <span class="hero-highlight">Digital Presence</span></h1>
@@ -653,12 +646,12 @@
                 <a href="#pricing" class="btn btn-secondary">View Our Plans</a>
             </div>
             <div class="hero-image">
-                <img src="deliciosa-carne-de-res-con-flor.jpg" alt="Professional Food Plating - Restaurant Social Media">
+                <!-- NUEVA IMAGEN EN LUGAR DEL RECTÁNGULO NARANJA -->
+                <img src="deliciosa-carne-de-res-con-flor.jpg" alt="Professional Food Plating">
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
         <div class="stats-container">
             <div class="stat-item">
@@ -676,7 +669,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <div class="section-header">
             <h2>What We Offer</h2>
@@ -737,7 +729,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section id="pricing" class="pricing">
         <div class="section-header">
             <h2>Simple, Transparent Pricing</h2>
@@ -781,7 +772,6 @@
         </div>
     </section>
 
-    <!-- Case Studies Section -->
     <section id="cases" class="cases">
         <div class="section-header">
             <h2>Real Results for Real Restaurants</h2>
@@ -862,7 +852,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="section-header">
             <h2>Ready to Transform Your Restaurant's Digital Presence?</h2>
@@ -893,7 +882,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-grid">
@@ -909,23 +897,31 @@
                 </div>
                 <div class="footer-section">
                     <h4>Services</h4>
-                    <p>Professional Food Photography<br>
-                    Social Media Management<br>
-                    Content Strategy<br>
-                    Paid Advertising<br>
-                    Analytics & Reporting</p>
+                    <p>
+                        Professional Food Photography<br>
+                        Social Media Management<br>
+                        Paid Advertising Campaigns<br>
+                        Analytics & Reporting
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
-                    <p>Buenos Aires, Argentina<br>
-                    Email: hello@foodfluence.com<br>
-                    Phone: +54 11 1234-5678</p>
+                    <p>
+                        Buenos Aires, Argentina<br>
+                        Email: info@foodfluence.com<br>
+                        Mon–Fri: 9:00 – 18:00
+                    </p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Foodfluence. All rights reserved. | Where flavors meet followers</p>
+                &copy; <span id="year"></span> Foodfluence. All rights reserved.
             </div>
         </div>
+
+        <script>
+            // Update year automatically
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </footer>
 </body>
 </html>
