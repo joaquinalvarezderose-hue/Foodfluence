@@ -6,7 +6,11 @@
     <title>Foodfluence | Turning Taste into Digital Presence</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --primary-orange: #FF8C42;
@@ -51,6 +55,10 @@
             color: var(--primary-orange);
         }
 
+        .logo i {
+            font-size: 1.8rem;
+        }
+
         .nav-links {
             display: none;
             gap: 2rem;
@@ -60,6 +68,11 @@
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-orange);
         }
 
         .hero {
@@ -69,41 +82,82 @@
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero-highlight { color: var(--primary-orange); }
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-highlight {
+            color: var(--primary-orange);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .cta-group {
-            margin-top: 2rem;
             display: flex;
             flex-direction: column;
             gap: 1rem;
             align-items: center;
+            margin-bottom: 3rem;
         }
 
         .btn {
+            display: inline-block;
             padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
+            min-height: 50px;
+            font-size: 1rem;
             font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: 0.3s;
+            border: none;
+            text-align: center;
         }
 
-        .btn-primary { background: var(--primary-orange); color: var(--white); }
-        .btn-secondary { border: 2px solid var(--white); color: var(--white); }
+        .btn-primary {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255,140,66,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--dark-gray);
+        }
 
         .hero-image {
             margin-top: 2rem;
             border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
         .hero-image img {
@@ -113,23 +167,31 @@
             object-fit: cover;
         }
 
-        /* STATS */
         .stats {
             background: var(--primary-orange);
-            padding: 2rem 5%;
             color: var(--white);
+            padding: 2rem 5%;
         }
 
         .stats-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 2rem;
             text-align: center;
         }
 
-        /* SERVICES */
+        .stat-item h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
         .services {
             padding: 4rem 5%;
             background: var(--light-gray);
@@ -137,14 +199,26 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
 
         .services-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
 
@@ -153,30 +227,144 @@
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        /* PRICING */
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li i {
+            color: var(--primary-orange);
+        }
+
         .pricing {
             padding: 4rem 5%;
             background: var(--white);
         }
 
         .pricing-grid {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
+            grid-template-columns: 1fr;
             gap: 2rem;
-            grid-template-columns: repeat(2, 1fr);
         }
 
         .pricing-card {
             background: var(--white);
             border: 2px solid var(--light-gray);
-            padding: 2rem;
             border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s;
         }
 
-        /* CASES (IMAGES UPDATED IN PART 2) */
+        .pricing-card:hover {
+            border-color: var(--primary-orange);
+            box-shadow: 0 10px 40px rgba(255,140,66,0.15);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-orange);
+            background: linear-gradient(135deg, rgba(255,140,66,0.05) 0%, rgba(255,107,53,0.05) 100%);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-orange);
+            margin: 1rem 0;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-dark);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features i {
+            color: var(--primary-orange);
+            margin-top: 0.25rem;
+        }
+
         .cases {
             padding: 4rem 5%;
             background: var(--light-gray);
@@ -186,7 +374,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
 
@@ -195,29 +383,255 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
         }
 
         .case-image {
             height: 200px;
-            width: 100%;
-            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-orange), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
         }
 
-        .case-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .case-content {
+            padding: 2rem;
         }
 
-        /* CONTACT + FOOTER (in part 2) */
+        .case-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
 
+        .case-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-orange);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .contact {
+            padding: 4rem 5%;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-orange);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 1rem;
+            min-height: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,140,66,0.3);
+        }
+
+        footer {
+            background: var(--dark-gray);
+            color: var(--white);
+            padding: 3rem 5% 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-orange);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        @media (min-width: 640px) {
+            .cta-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .case-metrics {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .cases-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
-
     <nav>
         <div class="nav-container">
-            <div class="logo"><i class="fas fa-camera"></i> Foodfluence</div>
+            <div class="logo">
+                <i class="fas fa-camera"></i>
+                Foodfluence
+            </div>
             <div class="nav-links">
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
@@ -228,52 +642,92 @@
     </nav>
 
     <section class="hero">
-        <h1>Turning Taste into <span class="hero-highlight">Digital Presence</span></h1>
-        <p>Professional food photography and strategic social media management designed exclusively for restaurants.</p>
-
-        <div class="cta-group">
-            <a href="#contact" class="btn btn-primary">Get Started Today</a>
-            <a href="#pricing" class="btn btn-secondary">View Our Plans</a>
-        </div>
-
-        <div class="hero-image">
-            <img src="deliciosa-carne-de-res-con-flor.jpg" alt="Hero Food Image">
+        <div class="hero-content">
+            <h1>Turning Taste into <span class="hero-highlight">Digital Presence</span></h1>
+            <p>Professional food photography and strategic social media management designed exclusively for restaurants. Attract more customers, build loyalty, and stand out online.</p>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Get Started Today</a>
+                <a href="#pricing" class="btn btn-secondary">View Our Plans</a>
+            </div>
+            <div class="hero-image">
+                <img src="deliciosa-carne-de-res-con-flor.jpg" alt="Professional Food Plating">
+            </div>
         </div>
     </section>
 
     <section class="stats">
         <div class="stats-container">
-            <div><h3>3+</h3><p>Restaurants Transformed</p></div>
-            <div><h3>100%</h3><p>Client Satisfaction</p></div>
-            <div><h3>200+</h3><p>Posts Monthly</p></div>
+            <div class="stat-item">
+                <h3>3+</h3>
+                <p>Restaurants Transformed</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Client Satisfaction</p>
+            </div>
+            <div class="stat-item">
+                <h3>200+</h3>
+                <p>Posts Created Monthly</p>
+            </div>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="section-header">
             <h2>What We Offer</h2>
-            <p>Everything your restaurant needs to grow online.</p>
+            <p>Everything your restaurant needs to build a powerful digital presence and attract more customers.</p>
         </div>
-
         <div class="services-grid">
             <div class="service-card">
-                <h3>Photography</h3>
-                <p>Stunning food & interior shots.</p>
+                <div class="service-icon">
+                    <i class="fas fa-camera-retro"></i>
+                </div>
+                <h3>Professional Food Photography</h3>
+                <p>High-quality images that showcase your dishes, ambiance, and team in the best possible light.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Monthly photoshoots</li>
+                    <li><i class="fas fa-check-circle"></i> Professional editing</li>
+                    <li><i class="fas fa-check-circle"></i> Up to 30 edited photos</li>
+                </ul>
             </div>
 
             <div class="service-card">
-                <h3>Social Media</h3>
-                <p>Content calendars & posting.</p>
+                <div class="service-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>Social Media Management</h3>
+                <p>Strategic content planning and consistent posting that keeps your restaurant top-of-mind.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Content calendar</li>
+                    <li><i class="fas fa-check-circle"></i> Up to 16 posts/month</li>
+                    <li><i class="fas fa-check-circle"></i> Stories & Reels</li>
+                </ul>
             </div>
 
             <div class="service-card">
-                <h3>Advertising</h3>
-                <p>IG + FB ads that convert customers.</p>
+                <div class="service-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Paid Advertising</h3>
+                <p>Targeted campaigns on Instagram and Facebook that drive real reservations and foot traffic.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Campaign setup</li>
+                    <li><i class="fas fa-check-circle"></i> Audience targeting</li>
+                    <li><i class="fas fa-check-circle"></i> Performance optimization</li>
+                </ul>
             </div>
 
             <div class="service-card">
-                <h3>Analytics</h3>
-                <p>Monthly performance reports.</p>
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Analytics & Reporting</h3>
+                <p>Clear monthly reports showing engagement growth, reach, and ROI so you always know what's working.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> Monthly KPI reports</li>
+                    <li><i class="fas fa-check-circle"></i> Growth insights</li>
+                    <li><i class="fas fa-check-circle"></i> Strategy recommendations</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -281,38 +735,81 @@
     <section id="pricing" class="pricing">
         <div class="section-header">
             <h2>Simple, Transparent Pricing</h2>
+            <p>Choose the plan that fits your restaurant's goals and budget. No hidden fees, no surprises.</p>
         </div>
-
         <div class="pricing-grid">
             <div class="pricing-card">
-                <h3>Starter — $350/mo</h3>
-                <p>Perfect for small restaurants starting online.</p>
+                <div class="pricing-header">
+                    <h3>Starter Plan</h3>
+                    <div class="pricing-price">$350<span>/month</span></div>
+                    <p>Perfect for small restaurants building their online presence</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 1 professional photoshoot per month</li>
+                    <li><i class="fas fa-check"></i> 10-12 edited photos</li>
+                    <li><i class="fas fa-check"></i> 8 social media posts</li>
+                    <li><i class="fas fa-check"></i> Optimized captions & hashtags</li>
+                    <li><i class="fas fa-check"></i> Basic monthly engagement report</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width: 100%; margin-top: 1rem;">Get Started</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Premium Plan</h3>
+                    <div class="pricing-price">$650<span>/month</span></div>
+                    <p>For restaurants ready to accelerate growth and brand recognition</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 2 professional photoshoots per month</li>
+                    <li><i class="fas fa-check"></i> 25-30 edited photos</li>
+                    <li><i class="fas fa-check"></i> 16 social media posts + Stories/Reels</li>
+                    <li><i class="fas fa-check"></i> Paid advertising setup & monitoring</li>
+                    <li><i class="fas fa-check"></i> Up to $200 ad budget managed</li>
+                    <li><i class="fas fa-check"></i> Advanced analytics with recommendations</li>
+                    <li><i class="fas fa-check"></i> Priority support</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Get Started</a>
             </div>
 
             <div class="pricing-card">
-                <h3>Premium — $650/mo</h3>
-                <p>Advanced growth for established restaurants.</p>
+                <div class="pricing-header">
+                    <h3>Premium Deluxe Plan</h3>
+                    <div class="pricing-price">$1,250<span>/month</span></div>
+                    <p>Complete solution for ambitious restaurants seeking market leadership</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 4 professional photoshoots per month</li>
+                    <li><i class="fas fa-check"></i> 40-50 high-resolution edited photos</li>
+                    <li><i class="fas fa-check"></i> 6 custom video content pieces (Reels, TikToks, Promos)</li>
+                    <li><i class="fas fa-check"></i> 24 social media posts + Stories/Reels</li>
+                    <li><i class="fas fa-check"></i> Premium branding & graphic design pack</li>
+                    <li><i class="fas fa-check"></i> Monthly holiday/special event design</li>
+                    <li><i class="fas fa-check"></i> Paid advertising up to $500 budget managed</li>
+                    <li><i class="fas fa-check"></i> Advanced analytics with actionable insights</li>
+                    <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                    <li><i class="fas fa-check"></i> WhatsApp priority support + 1 hour monthly consultation</li>
+                    <li><i class="fas fa-check"></i> Monthly influencer collaboration (1-2 influencers)</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Get Started</a>
             </div>
         </div>
     </section>
-    <!-- CASE STUDIES WITH REAL PHOTOS -->
+
     <section id="cases" class="cases">
         <div class="section-header">
             <h2>Real Results for Real Restaurants</h2>
-            <p>See how we've helped restaurants grow their digital presence.</p>
+            <p>See how we've helped independent restaurants transform their digital presence and grow their customer base.</p>
         </div>
-
         <div class="cases-grid">
-
-            <!-- JURI -->
             <div class="case-card">
                 <div class="case-image">
-                    <img src="delicioso-coctel-exotico.jpg" alt="JURI Cocktail Bar">
+                    <i class="fas fa-cocktail"></i>
                 </div>
                 <div class="case-content">
                     <h3>JURI - Cocktail Bar & Restaurant</h3>
-                    <p>Premium cocktail bar that needed strong visual identity and social media presence.</p>
-
+                    <p>Premium cocktail bar that needed to showcase their mixology expertise and attract both young professionals and mature diners.</p>
                     <div class="case-metrics">
                         <div class="metric">
                             <div class="metric-value">85%</div>
@@ -330,15 +827,13 @@
                 </div>
             </div>
 
-            <!-- LA ROTI -->
             <div class="case-card">
                 <div class="case-image">
-                    <img src="interior-del-restaurante.jpg" alt="La Roti Restaurant Interior">
+                    <i class="fas fa-utensils"></i>
                 </div>
                 <div class="case-content">
                     <h3>La Roti - Homemade Gourmet</h3>
-                    <p>Family restaurant in Adrogué showcasing fresh homemade cuisine.</p>
-
+                    <p>Family restaurant in Adrogué seeking to highlight their fresh, homemade cuisine with a gourmet presentation.</p>
                     <div class="case-metrics">
                         <div class="metric">
                             <div class="metric-value">120%</div>
@@ -356,15 +851,13 @@
                 </div>
             </div>
 
-            <!-- PIZZA GIGANTE -->
             <div class="case-card">
                 <div class="case-image">
-                    <img src="una-pizza-fresca-y-deliciosa.jpg" alt="Pizza Gigante Pizza">
+                    <i class="fas fa-pizza-slice"></i>
                 </div>
                 <div class="case-content">
                     <h3>Pizza Gigante - Delivery Expert</h3>
-                    <p>Villa Urquiza takeaway pizzeria that needed a professional digital presence.</p>
-
+                    <p>Takeaway pizzeria in Villa Urquiza that needed to establish a professional online presence to match their quality.</p>
                     <div class="case-metrics">
                         <div class="metric">
                             <div class="metric-value">200%</div>
@@ -381,94 +874,52 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="contact" style="padding: 4rem 5%; background: #fff;">
+    <section id="contact" class="contact">
         <div class="section-header">
-            <h2>Ready to Transform Your Restaurant’s Digital Presence?</h2>
-            <p>Book a free discovery call and let's grow your business together.</p>
+            <h2>Ready to Transform Your Restaurant's Digital Presence?</h2>
+            <p>Book a free discovery call and let's discuss how we can help your restaurant stand out online.</p>
         </div>
-
-        <div class="contact-container" style="max-width: 800px; margin: 0 auto;">
-            <form class="contact-form" action="https://formspree.io/f/xzzjlajn" method="POST"
-                  style="background: #F5F6FA; padding: 2rem; border-radius: 12px;">
-                
-                <div class="form-group" style="margin-bottom: 1.5rem;">
+        <div class="contact-container">
+            <form class="contact-form" action="https://formspree.io/f/xzzjlajn" method="POST">
+                <div class="form-group">
                     <label for="name">Your Name *</label>
-                    <input type="text" id="name" name="name" required
-                           style="width: 100%; padding: 0.875rem; border: 2px solid #ddd; border-radius: 8px;">
+                    <input type="text" id="name" name="name" required>
                 </div>
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required
-                           style="width: 100%; padding: 0.875rem; border: 2px solid #ddd; border-radius: 8px;">
+                    <input type="email" id="email" name="email" required>
                 </div>
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
+                <div class="form-group">
                     <label for="company">Restaurant Name *</label>
-                    <input type="text" id="company" name="company" required
-                           style="width: 100%; padding: 0.875rem; border: 2px solid #ddd; border-radius: 8px;">
+                    <input type="text" id="company" name="company" required>
                 </div>
-
-                <div class="form-group" style="margin-bottom: 1.5rem;">
-                    <label for="message">Tell us about your restaurant</label>
-                    <textarea id="message" name="message"
-                              style="width: 100%; padding: 0.875rem; border: 2px solid #ddd; border-radius: 8px; min-height: 120px;"></textarea>
+                <div class="form-group">
+                    <label for="message">Tell us about your restaurant and goals</label>
+                    <textarea id="message" name="message" placeholder="What makes your restaurant special? What are your main goals for social media?"></textarea>
                 </div>
-
-                <button type="submit" class="form-submit"
-                        style="width: 100%; background: var(--primary-orange); color: #fff; padding: 1rem; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600;">
+                <button type="submit" class="form-submit">
                     <i class="fas fa-paper-plane"></i> Book Discovery Call
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer style="background: var(--dark-gray); color: #fff; padding: 3rem 5% 1.5rem;">
-        <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
-            
-            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem;">
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-section">
-                    <h4 style="color: var(--primary-orange);">Foodfluence</h4>
-                    <p>Social media marketing & professional photography exclusively for restaurants.</p>
+                    <h4>Foodfluence</h4>
+                    <p>Specialized social media marketing and professional photography exclusively for restaurants. We turn your taste into digital presence.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
-
                 <div class="footer-section">
-                    <h4 style="color: var(--primary-orange);">Services</h4>
-                    <p>
-                        Food Photography<br>
-                        Social Media Management<br>
-                        Paid Advertising<br>
-                        Analytics & Reporting
-                    </p>
-                </div>
-
-                <div class="footer-section">
-                    <h4 style="color: var(--primary-orange);">Contact</h4>
-                    <p>
-                        Buenos Aires, Argentina<br>
-                        Email: info@foodfluence.com<br>
-                        Mon–Fri: 9:00 – 18:00
-                    </p>
-                </div>
-            </div>
-
-            <div class="footer-bottom" style="text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.1);">
-                &copy; <span id="year"></span> Foodfluence. All rights reserved.
-            </div>
-        </div>
-
-        <script>
-            document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
-    </footer>
-
-</body>
-</html>
-
-
+                    <h4>Services</h4>
+                    <p>Professional Food Photography<br>
